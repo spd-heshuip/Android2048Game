@@ -4,15 +4,42 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	private TextView mTvScore;
+	private int score;
+	private static final MainActivity mainActivity = new MainActivity();
+	private MainActivity() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static MainActivity getMainActivity(){
+		return mainActivity;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mTvScore = (TextView)findViewById(R.id.tvscore);
 	}
 
+	public void showScore(){
+		mTvScore.setText(score + "");
+	}
+	
+	public void clearScore(){
+		score = 0;
+		showScore();
+	}
+	
+	public void addScore(int add){
+		score = score + add;
+		showScore();
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
